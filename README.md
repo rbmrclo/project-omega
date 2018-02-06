@@ -1,6 +1,6 @@
 ## Project Omega
 
-Manage project omega's infrastracture as code. (a toy project)
+Manage project omega's (a toy project) infrastracture as code. More details to be added soon.
 
 - [ ] IAM
 - [ ] VPC
