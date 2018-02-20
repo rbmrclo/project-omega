@@ -27,6 +27,14 @@ resource "aws_route_table" "main" {
   }
 }
 
+resource "aws_route_table" "private" {
+  vpc_id = "${aws_vpc.main.id}"
+
+  tags {
+    Name = "private"
+  }
+}
+
 resource "aws_route" "main" {
   route_table_id         = "${aws_route_table.main.id}"
   destination_cidr_block = "0.0.0.0/0"
