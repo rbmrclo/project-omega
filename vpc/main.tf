@@ -36,3 +36,33 @@ resource "aws_main_route_table_association" "main" {
   vpc_id         = "${aws_vpc.main.id}"
   route_table_id = "${aws_route_table.main.id}"
 }
+
+resource "aws_network_acl" "bastion" {
+  vpc_id = "${aws_vpc.main.id}"
+
+  tags {
+    Name = "bastion"
+  }
+}
+
+resource "aws_network_acl_rule" "bastion_inbound" {
+  network_acl_id = "${aws_network_acl.bastion.id}"
+  rule_number    = 90
+  egress         = false
+  protocol       = "tcp"
+  rule_action    = "allow"
+  cidr_block     = "0.0.0.0/0"
+  to_port        = 22
+  from_port      = 22
+}
+
+resource "aws_network_acl_rule" "bastion_outbound" {
+  network_acl_id = "${aws_network_acl.bastion.id}"
+  rule_number    = 90
+  egress         = true
+  protocol       = "tcp"
+  rule_action    = "allow"
+  cidr_block     = "0.0.0.0/0"
+  to_port        = 22
+  from_port      = 22
+}
