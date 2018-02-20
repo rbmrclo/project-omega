@@ -66,3 +66,78 @@ resource "aws_network_acl_rule" "bastion_outbound" {
   to_port        = 22
   from_port      = 22
 }
+
+resource "aws_subnet" "main" {
+  vpc_id     = "${aws_vpc.main.id}"
+  cidr_block = "172.31.64.0/20"
+
+  tags {
+    Name = "${var.role}"
+  }
+}
+
+resource "aws_subnet" "public_a" {
+  vpc_id = "${aws_vpc.main.id}"
+  cidr_block = "${var.public_subnets["a"]}"
+  availability_zone = "${var.public_availability_zones["a"]}"
+  map_public_ip_on_launch = true
+
+  tags {
+    Name = "${var.public_subnet_tags["a"]}"
+  }
+}
+
+resource "aws_subnet" "public_b" {
+  vpc_id = "${aws_vpc.main.id}"
+  cidr_block = "${var.public_subnets["b"]}"
+  availability_zone = "${var.public_availability_zones["b"]}"
+  map_public_ip_on_launch = true
+
+  tags {
+    Name = "${var.public_subnet_tags["b"]}"
+  }
+}
+
+resource "aws_subnet" "public_c" {
+  vpc_id = "${aws_vpc.main.id}"
+  cidr_block = "${var.public_subnets["c"]}"
+  availability_zone = "${var.public_availability_zones["c"]}"
+  map_public_ip_on_launch = true
+
+  tags {
+    Name = "${var.public_subnet_tags["c"]}"
+  }
+}
+
+resource "aws_subnet" "private_a" {
+  vpc_id = "${aws_vpc.main.id}"
+  cidr_block = "${var.private_subnets["a"]}"
+  availability_zone = "${var.private_availability_zones["a"]}"
+  map_public_ip_on_launch = true
+
+  tags {
+    Name = "${var.private_subnet_tags["a"]}"
+  }
+}
+
+resource "aws_subnet" "private_b" {
+  vpc_id = "${aws_vpc.main.id}"
+  cidr_block = "${var.private_subnets["b"]}"
+  availability_zone = "${var.private_availability_zones["b"]}"
+  map_public_ip_on_launch = true
+
+  tags {
+    Name = "${var.private_subnet_tags["b"]}"
+  }
+}
+
+resource "aws_subnet" "private_c" {
+  vpc_id = "${aws_vpc.main.id}"
+  cidr_block = "${var.private_subnets["c"]}"
+  availability_zone = "${var.private_availability_zones["c"]}"
+  map_public_ip_on_launch = true
+
+  tags {
+    Name = "${var.private_subnet_tags["c"]}"
+  }
+}
