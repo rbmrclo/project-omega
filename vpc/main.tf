@@ -67,15 +67,6 @@ resource "aws_network_acl_rule" "bastion_outbound" {
   from_port      = 22
 }
 
-resource "aws_subnet" "main" {
-  vpc_id     = "${aws_vpc.main.id}"
-  cidr_block = "172.31.64.0/20"
-
-  tags {
-    Name = "${var.role}"
-  }
-}
-
 resource "aws_subnet" "public_a" {
   vpc_id = "${aws_vpc.main.id}"
   cidr_block = "${var.public_subnets["a"]}"
