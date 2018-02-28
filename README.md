@@ -4,7 +4,7 @@ Manage project omega's (a toy project) infrastracture as code. More details to b
 
 - [x] IAM
 - [x] VPC
-- [ ] S3
+- [x] S3
 - [ ] EC2
 - [ ] RDS / DynamoDB
 - [ ] SNS
