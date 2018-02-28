@@ -1,9 +1,19 @@
+resource "aws_s3_bucket" "public_website_log" {
+  bucket = "${var.domain}-log"
+  acl    = "log-delivery-write"
+}
+
 resource "aws_s3_bucket" "public_website" {
   bucket = "${var.domain}"
   acl    = "private"
   website = {
     index_document = "index.html"
     error_document = "index.html"
+  }
+
+  logging {
+    target_bucket = "${aws_s3_bucket.public_website_log.id}"
+    target_prefix = "log/"
   }
 }
 
