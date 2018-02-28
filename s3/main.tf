@@ -3,6 +3,7 @@ resource "aws_s3_bucket" "public_website_log" {
   acl    = "log-delivery-write"
 }
 
+# Used for versioning testing
 resource "aws_s3_bucket" "public_website_versioning" {
   bucket = "${var.domain}-versions"
   acl    = "private"
@@ -42,6 +43,10 @@ resource "aws_s3_bucket" "public_website" {
   logging {
     target_bucket = "${aws_s3_bucket.public_website_log.id}"
     target_prefix = "log/"
+  }
+
+  versioning {
+    enabled = true
   }
 }
 
