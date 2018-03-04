@@ -52,7 +52,7 @@ resource "aws_instance" "main" {
 }
 
 resource "aws_volume_attachment" "main_ebs_attachment" {
-  device_name = "/dev/sdb"
+  device_name = "/dev/sdf"
   volume_id   = "${aws_ebs_volume.main_ebs.id}"
   instance_id = "${aws_instance.main.id}"
 }
