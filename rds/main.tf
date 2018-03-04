@@ -23,15 +23,6 @@ resource "aws_security_group" "allow_all_rds" {
   }
 }
 
-resource "aws_db_security_group" "rds_security_group" {
-  name = "rds-security-group"
-
-  ingress {
-    security_group_id = "${aws_security_group.allow_all_rds.id}"
-    cidr = "0.0.0.0/0"
-  }
-}
-
 resource "aws_db_instance" "main" {
   engine = "mysql"
   engine_version = "5.6.27"
@@ -49,5 +40,5 @@ resource "aws_db_instance" "main" {
   username = "${var.username}"
   password = "${var.password}"
 
-  vpc_security_group_ids = ["${aws_db_security_group.rds_security_group.id}"]
+  vpc_security_group_ids = ["${aws_security_group.allow_all_rds.id}"]
 }
