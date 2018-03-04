@@ -41,7 +41,7 @@ module "s3" {
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
-# S3
+# EC2
 # ---------------------------------------------------------------------------------------------------------------------
 
 module "ec2" {
@@ -51,4 +51,23 @@ module "ec2" {
     "${module.vpc.vpc_default_security_group_id}",
     "${module.ec2.allow_all_security_group_id}",
   ]
+}
+
+# ---------------------------------------------------------------------------------------------------------------------
+# RDS
+# ---------------------------------------------------------------------------------------------------------------------
+
+module "rds" {
+  source = "./rds"
+  subnet_ids = [
+    "${module.vpc.subnet_private_a_id}",
+    "${module.vpc.subnet_private_b_id}",
+    "${module.vpc.subnet_private_c_id}",
+  ]
+  identifier = "project-omega-rds"
+  name = "database1"
+
+  # set dummy credentials for now
+  username = "xxxxxxxxx"
+  password = "xxxxxxxxx"
 }
