@@ -12,6 +12,19 @@ output "vpc_cidr_block" {
 output "subnet_public_a_id" {
   value = "${aws_subnet.public_a.id}"
 }
+# Needed for rds provisioning demo
+#
+output "subnet_private_a_id" {
+  value = "${aws_subnet.private_a.id}"
+}
+#
+output "subnet_private_b_id" {
+  value = "${aws_subnet.private_b.id}"
+}
+#
+output "subnet_private_c_id" {
+  value = "${aws_subnet.private_c.id}"
+}
 #
 output "vpc_default_security_group_id" {
   value = "${aws_vpc.main.default_security_group_id}"
