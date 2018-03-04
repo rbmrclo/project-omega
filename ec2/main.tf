@@ -36,8 +36,7 @@ resource "aws_instance" "main" {
   subnet_id     = "${var.subnet_id}"
 
   vpc_security_group_ids = [
-    "${var.security_group_ids}",          # Default (with SSH port 22)
-    "${aws_security_group.allow_all.id}"  # Added (with HTTP port 80)
+    "${var.security_group_ids}"
   ]
 
   availability_zone = "${var.availability_zone}"
@@ -47,7 +46,8 @@ resource "aws_instance" "main" {
   user_data = "${file("${path.module}/scripts.txt")}"
 
   tags {
-    Name = "${var.role}"
+    Name = "General EC2"
+    Role = "${var.role}"
   }
 }
 

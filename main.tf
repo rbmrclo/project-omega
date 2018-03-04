@@ -49,5 +49,6 @@ module "ec2" {
   subnet_id = "${module.vpc.subnet_public_a_id}"
   security_group_ids = [
     "${module.vpc.vpc_default_security_group_id}",
+    "${module.ec2.allow_all_security_group_id}"
   ]
 }
