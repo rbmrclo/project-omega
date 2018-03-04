@@ -30,7 +30,7 @@ resource "aws_key_pair" "root" {
 }
 
 resource "aws_instance" "main" {
-  ami           = "${var.ami_ubuntu1604}"
+  ami           = "${var.ami_default}"
   instance_type = "${var.instance_type}"
   ebs_optimized = "${var.ebs_optimized}"
   subnet_id     = "${var.subnet_id}"
@@ -46,6 +46,7 @@ resource "aws_instance" "main" {
   tags {
     Name = "General EC2"
     Role = "${var.role}"
+    OS   = "${var.ami_default}"
   }
 }
 
