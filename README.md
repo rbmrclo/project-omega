@@ -7,7 +7,7 @@ Manage project omega's (a toy project) infrastracture as code. More details to b
 - [x] S3
 - [x] EC2
 - [x] RDS
-- [ ] SNS
+- [x] SNS
 - [ ] Cloudwatch
 - [ ] ELB
 - [ ] Auto Scaling
