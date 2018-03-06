@@ -20,6 +20,8 @@ resource "aws_autoscaling_group" "main-asg" {
   force_delete              = true
   launch_configuration      = "${aws_launch_configuration.auto_scaling_conf.name}"
 
+  load_balancers = ["${var.load_balancer_names}"]
+
   availability_zones = [
     "${var.aws_region}a",
     "${var.aws_region}b",
