@@ -9,7 +9,7 @@ Manage project omega's (a toy project) infrastracture as code. More details to b
 - [x] RDS
 - [x] SNS
 - [x] Cloudwatch
-- [ ] ELB
+- [x] ELB
 - [x] Auto Scaling
-- [ ] Route 53
+- [x] Route 53
 - [ ] Lambda
