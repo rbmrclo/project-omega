@@ -100,5 +100,6 @@ module "auto_scaling" {
     "${module.ec2.allow_all_security_group_id}",
   ]
 
-  key_name = "${module.ec2.key_name}"
+  key_name      = "${module.ec2.key_name}"
+  sns_topic_arn = "${module.sns.autoscaling_group_topic_arn}"
 }
