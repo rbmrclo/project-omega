@@ -1,6 +1,8 @@
 ## Project Omega
 
-Manage project omega's (a toy project) infrastracture as code. More details to be added soon.
+![infra-img](https://user-images.githubusercontent.com/2811885/37061024-0edf2a32-21cd-11e8-99a9-8ed044076774.png)
+
+Manage project omega's (a toy project) infrastracture as code.
 
 - [x] IAM
 - [x] VPC
