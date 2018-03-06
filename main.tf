@@ -88,6 +88,27 @@ module "cloudwatch" {
   source = "./cloudwatch"
 }
 
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# Load Balancer
+# ---------------------------------------------------------------------------------------------------------------------
+
+module "elb" {
+  source = "./elb"
+
+  subnet_ids = [
+    "${module.vpc.subnet_public_a_id}",
+    "${module.vpc.subnet_public_b_id}",
+    "${module.vpc.subnet_public_c_id}",
+  ]
+
+  security_group_ids = [
+    "${module.vpc.vpc_default_security_group_id}",
+    "${module.ec2.allow_all_security_group_id}",
+  ]
+}
+
 # ---------------------------------------------------------------------------------------------------------------------
 # Autoscaling
 # ---------------------------------------------------------------------------------------------------------------------
@@ -102,4 +123,6 @@ module "auto_scaling" {
 
   key_name      = "${module.ec2.key_name}"
   sns_topic_arn = "${module.sns.autoscaling_group_topic_arn}"
+
+  load_balancer_names = ["${module.elb.main_elb_name}"]
 }
