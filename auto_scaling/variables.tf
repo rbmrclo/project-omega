@@ -16,3 +16,4 @@ variable "instance_type" {
 
 variable "security_group_ids" { type = "list" }
 variable "key_name" {}
+variable "sns_topic_arn" {}
