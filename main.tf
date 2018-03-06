@@ -87,3 +87,18 @@ module "sns" {
 module "cloudwatch" {
   source = "./cloudwatch"
 }
+
+# ---------------------------------------------------------------------------------------------------------------------
+# Autoscaling
+# ---------------------------------------------------------------------------------------------------------------------
+
+module "auto_scaling" {
+  source = "./auto_scaling"
+
+  security_group_ids = [
+    "${module.vpc.vpc_default_security_group_id}",
+    "${module.ec2.allow_all_security_group_id}",
+  ]
+
+  key_name = "${module.ec2.key_name}"
+}
