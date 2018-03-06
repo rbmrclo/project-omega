@@ -12,4 +12,4 @@ Manage project omega's (a toy project) infrastracture as code. More details to b
 - [x] ELB
 - [x] Auto Scaling
 - [x] Route 53
-- [ ] Lambda
+- [x] Lambda
